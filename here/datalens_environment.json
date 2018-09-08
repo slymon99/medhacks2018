@@ -1,0 +1,90 @@
+{
+  "id": "b34bb586-d4e7-d732-5e0e-79387ff0ba79",
+  "name": "https://datalens.api.here.com",
+  "values": [
+    {
+      "key": "DATALENS.HOST.URL",
+      "value": "https://datalens.api.here.com",
+      "type": "text",
+      "name": "DATALENS.HOST.URL",
+      "enabled": true,
+      "hovered": false
+    },
+    {
+      "key": "DATALENS.APP_ID",
+      "value": "<PUT_YOUR_VALUE>",
+      "type": "text",
+      "name": "DATALENS.APP_ID",
+      "enabled": true,
+      "hovered": false
+    },
+    {
+      "key": "DATALENS.APP_CODE",
+      "value": "<PUT_YOUR_VALUE>",
+      "type": "text",
+      "name": "DATALENS.APP_CODE",
+      "enabled": true,
+      "hovered": false
+    },
+    {
+      "key": "HERE.ACCOUNT.EMAIL",
+      "value": "<YOUR_HERE_ACCOUNT_EMAIL_GOES_HERE>",
+      "type": "text",
+      "name": "HERE.ACCOUNT.EMAIL",
+      "enabled": true,
+      "hovered": false
+    },
+    {
+      "key": "HERE.ACCOUNT.PASSWORD",
+      "value": "<YOUR_HERE_ACCOUNT_PASSWORD_GOES_HERE>",
+      "type": "text",
+      "name": "HERE.ACCOUNT.PASSWORD",
+      "enabled": true,
+      "hovered": false
+    },
+    {
+      "key": "HERE.ACCOUNT.AUTH_TOKEN",
+      "value": "",
+      "type": "text",
+      "name": "HERE.ACCOUNT.AUTH_TOKEN",
+      "enabled": true,
+      "hovered": false
+    },
+    {
+      "key": "HERE.ACCOUNT.REFRESH_TOKEN",
+      "value": "",
+      "type": "text",
+      "name": "HERE.ACCOUNT.REFRESH_TOKEN",
+      "enabled": true,
+      "hovered": false
+    },
+    {
+      "key": "DATALENS.DATASET_ID",
+      "value": "",
+      "type": "text",
+      "name": "DATALENS.DATASET_ID",
+      "enabled": true,
+      "hovered": false
+    },
+    {
+      "key": "DATALENS.JOB_ID",
+      "value": "",
+      "type": "text",
+      "name": "DATALENS.JOB_ID",
+      "enabled": true,
+      "hovered": false
+    },
+    {
+      "key": "DATALENS.QUERY_ID",
+      "value": "",
+      "type": "text",
+      "name": "DATALENS.QUERY_ID",
+      "enabled": true,
+      "hovered": false
+    }
+  ],
+  "timestamp": 1485184695438,
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2017-01-23T15:29:11.717Z",
+  "_postman_exported_using": "Postman/4.9.2"
+}
