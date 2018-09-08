@@ -31,11 +31,14 @@ def addOrder():
 	#get current max id
 	c = dbExecute(getConnection(), 'SELECT max(ID) from Orders')
 	max_id = c.fetchone()[0]
+	if not max_id:
+		max_id = 0
 
 	conn = getConnection()
-	dbExecute(conn, "INSERT INTO Orders VALUES(?, ?, ?, ?)", (max_id + 1, request.json['contents'], request.json['locationID'], request.json['customerID']))
+	dbExecute(conn, "INSERT INTO Orders VALUES(?, ?, ?, ?, ?)", (max_id + 1, request.json['contents'], request.json['locationID'], request.json['customerID'], "Incomplete"))
 	conn.commit()
 	return jsonify({"id":max_id + 1})
+
 
 
 if __name__ == "__main__":
