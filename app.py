@@ -39,6 +39,12 @@ def addOrder():
 	conn.commit()
 	return jsonify({"id":max_id + 1})
 
+@app.route('/api/v1.0/destinations')
+def mergeOrders():
+
+	#get all current orders
+	c = dbExecute(getConnection(), 'SELECT LocationID, GROUP_CONCAT(Contents) FROM Orders GROUP BY LocationID')
+	return jsonify({"results": c.fetchall()})
 
 
 if __name__ == "__main__":
