@@ -35,7 +35,8 @@ def addOrder():
 		max_id = 0
 
 	conn = getConnection()
-	dbExecute(conn, "INSERT INTO Orders VALUES(?, ?, ?, ?, ?)", (max_id + 1, request.json['contents'], jsonify(request.json['locationID']), request.json['customerID'], "Incomplete"))
+	print(request.json['contents'])
+	dbExecute(conn, "INSERT INTO Orders VALUES(?, ?, ?, ?, ?)", (max_id + 1, json.dumps(request.json['contents']), request.json['locationID'], request.json['customerID'], "Incomplete"))
 	conn.commit()
 	return jsonify({"id":max_id + 1})
 
@@ -43,8 +44,24 @@ def addOrder():
 def mergeOrders():
 
 	#get all current orders
-	c = dbExecute(getConnection(), 'SELECT LocationID, GROUP_CONCAT(Contents) FROM Orders GROUP BY LocationID')
-	return jsonify({"results": c.fetchall()})
+	c = dbExecute(getConnection(), 'SELECT Contents, LocationID FROM Orders')
+	combined = {}
+
+	for order in c.fetchall():
+		contents = json.loads(order[0])
+		location = order[1]
+		
+		if location in combined:
+			for key in contents:
+				if key in combined[location]:
+					combined[location][key]+=contents[key]
+				else:
+					combined[location][key]=1
+		else:
+			combined[location] = contents
+
+	return jsonify(combined)
+
 
 
 if __name__ == "__main__":
