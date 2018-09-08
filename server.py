@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, abort
 from db import getConnection, dbExecute
 app = Flask(__name__)
 
@@ -35,7 +35,6 @@ def addOrder():
 		max_id = 0
 
 	conn = getConnection()
-	print(request.json['contents'])
 	dbExecute(conn, "INSERT INTO Orders VALUES(?, ?, ?, ?, ?)", (max_id + 1, json.dumps(request.json['contents']), request.json['locationID'], request.json['customerID'], "Incomplete"))
 	conn.commit()
 	return jsonify({"id":max_id + 1})
@@ -64,6 +63,34 @@ def mergeOrders():
 def getLocations():
 	c = dbExecute(getConnection(), 'SELECT * FROM Locations')
 	return(jsonify({"locations":[{"Name":x[0], "Latitude":x[1], "Longitude":x[2], "ID":x[3]} for x in c.fetchall()]}))
+
+@app.route('/api/v1.0/login', methods = ['POST'])
+def login():
+	username = request.json['username']
+	password = request.json['password']
+	c = dbExecute(getConnection(), 'SELECT ID FROM Users WHERE username=? AND password=?', (username, password,))
+	result = c.fetchone()
+	if result:
+		return jsonify({"id":result[0]})
+	else:
+		abort(401)
+
+@app.route('/api/v1.0/register', methods = ['POST'])
+def register():
+	#get current max id
+	c = dbExecute(getConnection(), 'SELECT max(ID) from Users')
+	max_id = c.fetchone()[0]
+	if not max_id:
+		max_id = 0
+
+	conn = getConnection()
+	dbExecute(conn, "INSERT INTO Users VALUES(?, ?, ?, ?, ?)", (max_id + 1, request.json['username'], request.json['password'], request.json['first'], request.json['last']))
+	conn.commit()
+
+	return jsonify({"id":max_id + 1})
+
+	
+
 
 if __name__ == "__main__":
 	app.run(debug = True)
