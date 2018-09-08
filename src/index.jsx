@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from '@material-ui/core/Button';
 import MyFancyComponent from './ui/MyMapComponent';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
-
+import SimpleModal from './ui/SimpleModal';
 class App extends React.Component {
 
 
@@ -20,11 +18,9 @@ class App extends React.Component {
                 containerElement={<div style={{ height: `400px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
                                 />
+                <SimpleModal classes="noidea"/>
 
-
-                <Button variant="contained" color="primary">
-                    Hello World
-                </Button>
+                
                 
             </div>
         );
