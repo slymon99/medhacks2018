@@ -12,8 +12,9 @@ def hello_world():
 @app.route('/api/v1.0/fruit')
 def getFruit():
 	c = dbExecute(getConnection(), 'SELECT * FROM Fruit')
-	res = c.fetchall()
-	return jsonify({"results": res})
+	fruits = c.fetchall()
+	fruits_parsed = {"results": {x[0]: x[1] for x in fruits}}
+	return jsonify(fruits_parsed)
 
 if __name__ == "__main__":
 	app.run(debug = True)
