@@ -65,7 +65,5 @@ def getLocations():
 	c = dbExecute(getConnection(), 'SELECT * FROM Locations')
 	return(jsonify({"locations":[{"Name":x[0], "Latitude":x[1], "Longitude":x[2], "ID":x[3]} for x in c.fetchall()]}))
 
-
-
 if __name__ == "__main__":
 	app.run(debug = True)
