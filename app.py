@@ -16,5 +16,13 @@ def getFruit():
 	fruits_parsed = {"results": {x[0]: x[1] for x in fruits}}
 	return jsonify(fruits_parsed)
 
+@app.route('/api/v1.0/veg')
+def getFruit():
+	c = dbExecute(getConnection(), 'SELECT * FROM Veg')
+	veg = c.fetchall()
+	veg_parsed = {"results": {x[0]: x[1] for x in veg}}
+	return jsonify(veg_parsed)
+
+
 if __name__ == "__main__":
 	app.run(debug = True)
