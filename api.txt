@@ -1,0 +1,18 @@
+Api
+
+POST
+
+http://127.0.0.1:5000/api/v1.0/addOrder
+{"contents":{"Oranges": 2}, "customerID":4, "locationID":4}
+
+http://127.0.0.1:5000/api/v1.0/register (returns {“id”: int})
+{"username":"bigboi", "password":"ilovsemydogs", "first":"big", "last":"boi"}
+
+http://127.0.0.1:5000/api/v1.0/login
+{"username":"slymon99", "password":"ilovsemydogs"}
+
+GET
+http://127.0.0.1:5000/api/v1.0/destinations
+http://127.0.0.1:5000/api/v1.0/locations
+http://127.0.0.1:5000/api/v1.0/fruit
+http://127.0.0.1:5000/api/v1.0/veg
