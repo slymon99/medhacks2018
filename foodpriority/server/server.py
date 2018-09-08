@@ -44,23 +44,22 @@ def addOrder():
 def mergeOrders():
 
 	#get all current orders
-	c = dbExecute(getConnection(), 'SELECT Contents, LocationID FROM Orders')
+	c = dbExecute(getConnection(), 'SELECT Contents, LocationID, CustomerID FROM Orders')
 	combined = {}
 
 	for order in c.fetchall():
 		contents = json.loads(order[0])
 		location = order[1]
-		
+		customer = order[2]
+
+		formatted = {"customer": customer, "location": location,"contents":contents}
 		if location in combined:
-			for key in contents:
-				if key in combined[location]:
-					combined[location][key]+=contents[key]
-				else:
-					combined[location][key]=1
+			combined[location].append(formatted)
 		else:
-			combined[location] = contents
+			combined[location] = [formatted]
 
 	return jsonify(combined)
+
 
 
 
