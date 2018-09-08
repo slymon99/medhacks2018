@@ -35,7 +35,7 @@ def addOrder():
 		max_id = 0
 
 	conn = getConnection()
-	dbExecute(conn, "INSERT INTO Orders VALUES(?, ?, ?, ?, ?)", (max_id + 1, request.json['contents'], request.json['locationID'], request.json['customerID'], "Incomplete"))
+	dbExecute(conn, "INSERT INTO Orders VALUES(?, ?, ?, ?, ?)", (max_id + 1, request.json['contents'], jsonify(request.json['locationID']), request.json['customerID'], "Incomplete"))
 	conn.commit()
 	return jsonify({"id":max_id + 1})
 
