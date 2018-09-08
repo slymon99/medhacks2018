@@ -14,5 +14,6 @@ module.exports = {
     output: {
         path: __dirname + '/static',
         filename: 'bundle.js'
-    }
+    },
+    watch: true
 };
