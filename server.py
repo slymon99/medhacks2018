@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from db import getConnection, dbExecute
 app = Flask(__name__)
 
@@ -6,8 +6,8 @@ import sqlite3
 import json
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def index():
+    return render_template('index.html')
 
 @app.route('/api/v1.0/fruit')
 def getFruit():
