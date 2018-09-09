@@ -11,8 +11,8 @@ function rand() {
 }
 
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+  const top = 50;
+  const left = 50;
 
   return {
     top: `${top}%`,
@@ -24,17 +24,28 @@ function getModalStyle() {
 const styles = theme => ({
   paper: {
     position: 'absolute',
-    width: theme.spacing.unit * 50,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4,
+    padding: theme.spacing.unit,
   },
 });
 
 class SimpleModal extends React.Component {
-  state = {
-    open: false,
-  };
+
+  constructor(props){
+    super(props)
+    this.state = {
+      open: false,
+      alignItems: "center"
+    };
+
+  }
+
+
+  // state = {
+  //   open: false,
+  //   alignItems : "center"
+  // };
 
   handleOpen = () => {
     this.setState({ open: true });
@@ -49,8 +60,7 @@ class SimpleModal extends React.Component {
 
     return (
       <div>
-        <Typography gutterBottom>Click to get the full Modal experience!</Typography>
-        <Button onClick={this.handleOpen}>Open Modal</Button>
+        <Button value = "center" variant = "contained" color = "primary" onClick={this.handleOpen}>Request Pickup</Button>
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
