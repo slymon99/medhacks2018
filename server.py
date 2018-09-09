@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request, render_template, abort
 from db import getConnection, dbExecute
-from authorize import charge
 
 app = Flask(__name__)
 
@@ -90,11 +89,6 @@ def register():
 	conn.commit()
 
 	return jsonify({"id":max_id + 1, "username": request.json['username']})
-
-@app.route('/api/v1.0/pay', methods = ['POST'])
-def pay():
-	return jsonify({"result":charge.charge_credit_card(request.json['amount'], request.json['cardnumber'], request.json['expiration'], request.json['cvv'])})
-	
 
 
 if __name__ == "__main__":
