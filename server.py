@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, request, render_template, abort
 from db import getConnection, dbExecute
+from authorize import charge
+
 app = Flask(__name__)
 
 import sqlite3
@@ -71,7 +73,7 @@ def login():
 	c = dbExecute(getConnection(), 'SELECT ID FROM Users WHERE username=? AND password=?', (username, password,))
 	result = c.fetchone()
 	if result:
-		return jsonify({"id":result[0]})
+		return jsonify({"id":result[0], "username":username})
 	else:
 		abort(401)
 
@@ -87,8 +89,11 @@ def register():
 	dbExecute(conn, "INSERT INTO Users VALUES(?, ?, ?, ?, ?)", (max_id + 1, request.json['username'], request.json['password'], request.json['first'], request.json['last']))
 	conn.commit()
 
-	return jsonify({"id":max_id + 1})
+	return jsonify({"id":max_id + 1, "username", request.json['username']})
 
+@app.route('/api/v1.0/pay', methods = ['POST'])
+def pay():
+	return jsonify({"result":charge.charge_credit_card(request.json['amount'], request.json['cardnumber'], request.json['expiration'], request.json['cvv'])})
 	
 
 
