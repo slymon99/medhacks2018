@@ -2,7 +2,39 @@ import React from "react"
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import SignInPageModal from './SignInPageModal'
-import SimpleModal from './SimpleModal';
+// import SimpleModal from './SimpleModal';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Modal from '@material-ui/core/Modal';
+import Button from '@material-ui/core/Button';
+import Form from './Form';
+import PropTypes from 'prop-types';
+
+
+function rand() {
+  return Math.round(Math.random() * 20) - 10;
+}
+
+function getModalStyle() {
+  const top = 50;
+  const left = 50;
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
+const styles = theme => ({
+  paper: {
+    position: 'absolute',
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit,
+  },
+});
+
 
 const MyMapComponent = compose(
  withProps({
@@ -26,10 +58,30 @@ const MyMapComponent = compose(
  </GoogleMap>
 );
 
+
+
 class MyFancyComponent extends React.PureComponent {
-  state = {
-    isMarkerShown: true,
+
+
+  constructor(props){
+    super(props)
+    this.state = {
+      open: false,
+      alignItems: "center",
+      isMarkerShown: true
+      
+    };
+
   }
+
+
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
   componentDidMount() {
     this.delayedShowMarker()
@@ -56,17 +108,35 @@ class MyFancyComponent extends React.PureComponent {
   // //   this.setState({ open: true });
   // // };
   render() {
+    const { classes } = this.props;
     return (
       <div>
         <SignInPageModal />
-        <SimpleModal classes = "left" open={this.handleMarkerClick} />
+        {/* <SimpleModal classes="left" open={this.handleMarkerClick} /> */}
       <MyMapComponent
         isMarkerShown={this.state.isMarkerShown}
         onMarkerClick={this.handleMarkerClick}
       />
+        <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={this.state.open}
+          onClose={this.handleClose}
+        >
+          <div style={getModalStyle()} className={classes.paper}>
+            <Typography variant="title" id="modal-title">
+              Grocery List
+            </Typography>
+            <Typography variant="subheading" id="simple-modal-description">
+              <Form /> 
+            </Typography>
+          </div>
+        </Modal>
+        
       </div>
     )
   }
 }
+const Component = withStyles(styles)(MyFancyComponent);
 
-export default MyFancyComponent;
+export default Component;
