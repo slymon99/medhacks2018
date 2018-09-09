@@ -31,10 +31,21 @@ const styles = theme => ({
 });
 
 class SimpleModal extends React.Component {
-  state = {
-    open: false,
-    alignItems : "center"
-  };
+
+  constructor(props){
+    super(props)
+    this.state = {
+      open: false,
+      alignItems: "center"
+    };
+
+  }
+
+
+  // state = {
+  //   open: false,
+  //   alignItems : "center"
+  // };
 
   handleOpen = () => {
     this.setState({ open: true });

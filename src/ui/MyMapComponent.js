@@ -2,6 +2,7 @@ import React from "react"
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import SignInPageModal from './SignInPageModal'
+import SimpleModal from './SimpleModal';
 
 const MyMapComponent = compose(
  withProps({
@@ -41,15 +42,24 @@ class MyFancyComponent extends React.PureComponent {
   }
 
   handleMarkerClick = () => {
-    this.setState({ isMarkerShown: true })
+    this.setState({ isMarkerShown: false, open: true })
     this.delayedShowMarker()
     console.log("hiiiii")
   }
 
+  // toggleModal() {
+  //   this.setState({
+  //   open: this.state.open
+  //   });
+  //  }
+  // // handleOpen = () => {
+  // //   this.setState({ open: true });
+  // // };
   render() {
     return (
       <div>
         <SignInPageModal />
+        <SimpleModal classes = "left" open={this.handleMarkerClick} />
       <MyMapComponent
         isMarkerShown={this.state.isMarkerShown}
         onMarkerClick={this.handleMarkerClick}
