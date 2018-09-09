@@ -95,12 +95,13 @@ export class SignInPageModal extends React.Component {
         <main
           className="SignInPageModal"
           style={{
-            padding: '0 20px',
+            padding: '0 20px', width: "450px", margin: "auto"
           }}
         >
           <Paper style={style.paper}>
             <h2 style={style.title}>Sign In</h2>
             <form>
+
 
 
               <div>
@@ -128,13 +129,14 @@ export class SignInPageModal extends React.Component {
 
               </div>
 
-              <div>
+             <div>
                 {/* <input type='submit' value='Sign In' /> */}
-                <Button size="large" style={style.button} onClick={() => {this.clickedLogin(); this.handleClose()}}>
+                <Button style={style.button} onClick={() => {this.clickedLogin(); this.handleClose()}}>
                   LOGIN
               </Button>
-              
-              <Button size="large" style={style.button} onClick={this.clickedRegister}>
+              </div>
+              <div>
+              <Button style={style.button} onClick={this.clickedRegister}>
                   REGISTER
               </Button>
               </div>
