@@ -10,7 +10,7 @@ class App extends React.Component {
 
     render(props) {
         return (
-            <div>My Flask React App!
+            <div>
                 
               
               <MyFancyComponent

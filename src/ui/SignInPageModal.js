@@ -11,7 +11,7 @@ const style = {
     background: '#00578e',
     borderRadius: 3,
     color: 'white',
-    width: '30%',
+    // width: '30%',
     marginTop: '30px'
   },
 

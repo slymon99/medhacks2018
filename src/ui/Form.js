@@ -71,37 +71,15 @@ class Form extends React.Component {
             createData('Vegetables', 'Carrots', 1.40, 3, 0),
             createData('Vegetables', 'Lettuce', 1.95, 3,0),
             createData('Vegetables', 'Spinach', 3.92, 3,0),
-            createData('Fruit', 'Grapefruit', .66,3, 0),
-            createData('Fruit', 'Mangoes', 1.00, 3,0),
-            createData('Fruit', 'Honeydew', .55, 3,0),
+            // createData('Fruit', 'Grapefruit', .66,3, 0),
+            // createData('Fruit', 'Mangoes', 1.00, 3,0),
+            // createData('Fruit', 'Honeydew', .55, 3,0),
         ];
 
 
         return (
             <div>
-                <Grid container spacing={8} alignItems="flex-end">
-                    <Grid item>
-                        Apple
-                </Grid>
-                    <Grid item>
-                        $1.50
-                </Grid>
-                    <Grid item>
-                        <TextField id="appleQty" type="number" value={this.state.appleQty} onChange={this.handleChange('appleQty')} />
-                    </Grid>
-                </Grid>
-
-                <Grid container spacing={8} alignItems="flex-end">
-                    <Grid item>
-                        Orange
-                </Grid>
-                    <Grid item>
-                        $2.00
-                </Grid>
-                    <Grid item>
-                        <TextField id="appleQty" type="number" value={this.state.orangeQty} onChange={this.handleChange('orangeQty')} />
-                    </Grid>
-                </Grid>
+                
 
                 <Button variant="contained" color="primary" onClick={this.handleSubmit}>
                     Submit
