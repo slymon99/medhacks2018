@@ -21,10 +21,24 @@ const MyMapComponent = compose(
   </GoogleMap>
 );
 
-class MyFancyComponent extends React.PureComponent {
+class position extends React.Component {
   state = {
     isMarkerShown: false,
-  }
+    data: [
+      createData('39.288912', '-76.631203', "Community Engagement Center"),
+      createData('39.291171', '-76.640741', "Franklin Square School"),
+      createData('39.287814', '-76.649725', "Central Baptist Church"),
+      createData('39.297627', '-76.665858', "Alexander Hamilton Elementary School"),
+      createData('39.29968', '-76.630398', "Furman L Templeton Elementary School"),
+    ],
+    page: 0,
+    rowsPerPage: 10,
+  };
+
+// class MyFancyComponent extends React.PureComponent {
+//   state = {
+//     isMarkerShown: false,
+//   }
 
   componentDidMount() {
     this.delayedShowMarker()
