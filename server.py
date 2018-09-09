@@ -89,7 +89,7 @@ def register():
 	dbExecute(conn, "INSERT INTO Users VALUES(?, ?, ?, ?, ?)", (max_id + 1, request.json['username'], request.json['password'], request.json['first'], request.json['last']))
 	conn.commit()
 
-	return jsonify({"id":max_id + 1, "username", request.json['username']})
+	return jsonify({"id":max_id + 1, "username": request.json['username']})
 
 @app.route('/api/v1.0/pay', methods = ['POST'])
 def pay():

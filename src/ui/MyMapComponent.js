@@ -1,6 +1,7 @@
 import React from "react"
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import SignInPageModal from './SignInPageModal'
 
 const MyMapComponent = compose(
   withProps({
@@ -43,10 +44,13 @@ class MyFancyComponent extends React.PureComponent {
 
   render() {
     return (
+      <div>
+        <SignInPageModal />
       <MyMapComponent
         isMarkerShown={this.state.isMarkerShown}
         onMarkerClick={this.handleMarkerClick}
       />
+      </div>
     )
   }
 }
