@@ -30,7 +30,7 @@ class Form extends React.Component {
 
 
 
-    handleSubmit = (props) => {
+    handleSubmit = () => {
         this.setState({ open: true });
         console.log("SUCCESSSSSSS")
         debugger;
@@ -43,6 +43,7 @@ class Form extends React.Component {
 
     };
 
+    debugger;
 
     handleChange = name => event => {
         this.setState({
@@ -59,7 +60,7 @@ class Form extends React.Component {
           return { id, category, name, price, servings, qty };
         }
         
-        const rows = [
+         this.state.row = [
             createData('Fruit', 'Apples', 1.18, 3, 1),
             createData('Fruit', 'Oranges', .83, 2, 2),
             createData('Fruit', 'Bananas', .45, 3, 0),
@@ -70,9 +71,6 @@ class Form extends React.Component {
             createData('Vegetables', 'Carrots', 1.40, 3, 0),
             createData('Vegetables', 'Lettuce', 1.95, 3,5),
             createData('Vegetables', 'Spinach', 3.92, 3,0),
-            createData('Fruit', 'Grapefruit', .66,3, 0),
-            createData('Fruit', 'Mangoes', 1.00, 3,3),
-            createData('Fruit', 'Honeydew', .55, 3,0),
         ];
 
 
@@ -118,7 +116,7 @@ class Form extends React.Component {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {rows.map(row => {
+                                    {this.state.row.map(row => {
                                         return (
                                             <TableRow key={row.id}>
                                                 <TableCell component="th" scope="row">
