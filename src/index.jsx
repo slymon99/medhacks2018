@@ -23,7 +23,7 @@ class App extends React.Component {
                 {/* <SimpleTable/>
                 <SimpleModal classes="noidea"/> */}
                 <SimpleModal classes = "left"/>
-                <SimpleTable class="right"/>
+                
 
 
                 

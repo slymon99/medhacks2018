@@ -33,6 +33,7 @@ const styles = theme => ({
 class SimpleModal extends React.Component {
   state = {
     open: false,
+    alignItems : "center"
   };
 
   handleOpen = () => {
@@ -48,8 +49,7 @@ class SimpleModal extends React.Component {
 
     return (
       <div>
-        <Typography gutterBottom>Click to get the full Modal experience!</Typography>
-        <Button onClick={this.handleOpen}>Open Modal</Button>
+        <Button value = "center" variant = "contained" color = "primary" onClick={this.handleOpen}>Request Pickup</Button>
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"

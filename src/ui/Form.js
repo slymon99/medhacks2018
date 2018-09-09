@@ -82,9 +82,7 @@ class Form extends React.Component {
             <div>
                 
 
-                <Button variant="contained" color="primary" onClick={this.handleSubmit}>
-                    Submit
-                </Button>
+                
 
                         <Paper >
                             <Table >
@@ -116,7 +114,9 @@ class Form extends React.Component {
                                 </TableBody>
                             </Table>
                         </Paper>
-
+<Button variant="contained" color="primary" onClick={this.handleSubmit}>
+                    Proceed to checkout with Authorize.net
+                </Button>
 
             </div>
         );
