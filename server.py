@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, request, render_template, abort
 from db import getConnection, dbExecute
+from authorize import charge
+
 app = Flask(__name__)
 
 import sqlite3
@@ -89,6 +91,9 @@ def register():
 
 	return jsonify({"id":max_id + 1})
 
+@app.route('/api/v1.0/pay', methods = ['POST'])
+def pay():
+	return jsonify({"result":charge.charge_credit_card(request.json['amount'], request.json['cardnumber'], request.json['expiration'], request.json['cvv'])})
 	
 
 
