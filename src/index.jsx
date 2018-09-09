@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MyFancyComponent from './ui/MyMapComponent';
 import SimpleModal from './ui/SimpleModal';
-import RealTable from './ui/RealTable';
+import SimpleTable from './ui/SimpleTable';
 class App extends React.Component {
 
 
@@ -20,10 +20,10 @@ class App extends React.Component {
                 containerElement={<div style={{ height: `400px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
                                 />
-                {/* <RealTable/>
+                {/* <SimpleTable/>
                 <SimpleModal classes="noidea"/> */}
                 <SimpleModal classes = "left"/>
-                <RealTable class="right"/>
+                <SimpleTable class="right"/>
 
 
                 
