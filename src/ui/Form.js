@@ -24,24 +24,23 @@ class Form extends React.Component {
     state = {
         appleQty: '',
         orangeQty: '0',
+        row: []
     };
 
 
 
 
-    handleSubmit = () => {
+    handleSubmit = (props) => {
         this.setState({ open: true });
         console.log("SUCCESSSSSSS")
+        debugger;
         axios({
             method: 'post',
             url: 'http://127.0.0.1:5000/api/v1.0/addOrder',
-            data: {
-                "contents":
-                    { "Oranges": 3 },
-                "customerID": 1,
-                "locationID": 4253235
-            }
+            data: this.state.row
         });
+        debugger;
+
     };
 
 
@@ -61,18 +60,18 @@ class Form extends React.Component {
         }
         
         const rows = [
-            createData('Fruit', 'Apples', 1.18, 3, 0),
-            createData('Fruit', 'Oranges', .83, 2, 0),
+            createData('Fruit', 'Apples', 1.18, 3, 1),
+            createData('Fruit', 'Oranges', .83, 2, 2),
             createData('Fruit', 'Bananas', .45, 3, 0),
             createData('Fruit', 'Blackberries', 5.18, 3, 0),
             createData('Fruit', 'Blueberries', 3.91, 3, 0),
-            createData('Vegetables', 'Broccoli', 1.84,3, 0),
+            createData('Vegetables', 'Broccoli', 1.84,3, 1),
             createData('Vegetables', 'Celery', 2.25, 3,0),
             createData('Vegetables', 'Carrots', 1.40, 3, 0),
-            createData('Vegetables', 'Lettuce', 1.95, 3,0),
+            createData('Vegetables', 'Lettuce', 1.95, 3,5),
             createData('Vegetables', 'Spinach', 3.92, 3,0),
             createData('Fruit', 'Grapefruit', .66,3, 0),
-            createData('Fruit', 'Mangoes', 1.00, 3,0),
+            createData('Fruit', 'Mangoes', 1.00, 3,3),
             createData('Fruit', 'Honeydew', .55, 3,0),
         ];
 
